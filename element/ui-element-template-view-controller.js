@@ -6,7 +6,7 @@ const uiElementTemplate = uiElementTemplateDoc.ownerDocument.querySelector('#ui-
 class ElementTemplate extends HTMLElement {
 
   static get observedAttributes(){
-    return ['value', 'type', 'icon', 'size'];
+    return ['value', 'type', 'size'];
   }
 
   constructor(){
@@ -27,12 +27,31 @@ class ElementTemplate extends HTMLElement {
     this.$container = this.shadowRoot.querySelector('.container');
     this.$icon = this.shadowRoot.querySelector('#icon');
 
-		this.$container.addEventListener('click', this.clicked)
+		//Bind context to event, so we can access self
+		this.$container.addEventListener('click', this.clicked.bind(this))
     this._updateRendering();
 	}
 
-	clicked(e){
-		console.log('CONTAINER CLICKED')
+	clicked(){
+		let original = this.class;
+		let temp = 'fa fa-check'
+
+		this.class = temp;
+		this.$container.style.boxShadow = "inset 0px 0px 0px 2px #70c1b3";
+		this.$container.style.backgroundColor = "#70c1b3"
+		this.$icon.style.color = "#fff"
+
+		this._updateRendering();
+
+		let feedbackTimer = window.setTimeout(e => {
+			window.clearTimeout(feedbackTimer);
+			this.$container.style.backgroundColor = "gray"
+			this.$container.style.boxShadow = "inset 0px 0px 0px 2px gray";
+			this.$icon.style.color = "#fff"
+			this.class = original;
+			this._updateRendering();
+			this._updateEvent()
+		}, 1000)
 	}
 
 	adoptedCallback(){
@@ -55,10 +74,6 @@ class ElementTemplate extends HTMLElement {
 				if(this.validTypes.includes(newVal)){ this.type = newVal; }
 				else { this.type = 'share'; }
 				console.log('TYPE: ', newVal)
-				break;
-			case 'icon':
-				this.icon = newVal;
-				console.log('ICON: ', newVal)
 				break;
 			case 'size':
 				this.size = newVal;
