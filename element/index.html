@@ -1,0 +1,49 @@
+<template id="ui-element-template-view">
+
+  <style>
+
+		@import url('//use.fontawesome.com/releases/v4.7.0/css/font-awesome-css.min.css');
+		@font-face {
+			font-family: 'FontAwesome';
+			src: url('//use.fontawesome.com/releases/v4.7.0/fonts/fontawesome-webfont.eot');
+			src: url('//use.fontawesome.com/releases/v4.7.0/fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+			url('//use.fontawesome.com/releases/v4.7.0/fonts/fontawesome-webfont.woff2') format('woff2'),
+			url('//use.fontawesome.com/releases/v4.7.0/fonts/fontawesome-webfont.woff') format('woff'),
+			url('//use.fontawesome.com/releases/v4.7.0/fonts/fontawesome-webfont.ttf') format('truetype'),
+			url('//use.fontawesome.com/releases/v4.7.0/fonts/fontawesome-webfont.svg#fontawesomeregular') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		.container {
+			border-radius: 1em;
+			display:inline-block;
+			background-color:gray;
+			cursor: pointer;
+			color:white;
+		}
+
+		.container:hover {
+			background-color:white;
+			color: #fd5871;
+			box-shadow:inset 0px 0px 0px 2px #fd5871;
+			-moz-box-shadow:inset 0px 0px 0px 2px #fd5871;
+			-webkit-box-shadow:inset 0px 0px 0px 2px #fd5871;
+		}
+
+		#icon {
+			vertical-align:middle;
+			text-align:center;
+			line-height:1em;
+		}
+
+	</style>
+
+	<div class="container">
+		<i id="icon" class="fa fa-arrows fa-4x"></i>
+	</div>
+
+</template>
+
+<script type="text/javascript" src="ui-element-template-data-controller.js"> </script>
+<script type="text/javascript" src="ui-element-template-view-controller.js"> </script>

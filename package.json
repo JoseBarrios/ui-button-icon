@@ -1,0 +1,34 @@
+{
+  "name": "@josebarrios/ui-element-template",
+  "version": "0.0.1",
+  "description": "A custom element template",
+  "main": "index.js",
+  "scripts": {
+    "build": "./node_modules/yarn/bin/yarn upgrade; ./node_modules/webpack/bin/webpack.js",
+    "test": "./node_modules/http-server/bin/http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoseBarrios/ui-element-template.git"
+  },
+  "keywords": [
+    "custom",
+    "element",
+    "class"
+  ],
+  "browser": "browser.js",
+  "author": "JoseBarrios",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/JoseBarrios/ui-element-template/issues"
+  },
+  "homepage": "https://github.com/JoseBarrios/ui-element-template#readme",
+  "devDependencies": {
+    "http-server": "^0.10.0",
+    "mocha": "^3.4.2",
+    "webpack": "^3.3.0",
+    "yarn": "^0.27.5"
+  },
+  "dependencies": {
+  }
+}
