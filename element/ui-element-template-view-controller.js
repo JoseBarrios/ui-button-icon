@@ -33,6 +33,8 @@ class ElementTemplate extends HTMLElement {
 	}
 
 	clicked(){
+		console.log('clicked')
+		this.$container.removeEventListener('click', this.clicked)
 		let original = this.class;
 		let temp = 'fa fa-check'
 
@@ -45,13 +47,15 @@ class ElementTemplate extends HTMLElement {
 
 		let feedbackTimer = window.setTimeout(e => {
 			window.clearTimeout(feedbackTimer);
+			this.$container.addEventListener('click', this.clicked.bind(this))
+
 			this.$container.style.backgroundColor = "gray"
 			this.$container.style.boxShadow = "inset 0px 0px 0px 2px gray";
 			this.$icon.style.color = "#fff"
 			this.class = original;
 			this._updateRendering();
 			this._updateEvent()
-		}, 1000)
+		}, 3000)
 	}
 
 	adoptedCallback(){
