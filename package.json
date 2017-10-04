@@ -1,6 +1,6 @@
 {
   "name": "@josebarrios/ui-share-button",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A share button element ",
   "main": "index.js",
   "scripts": {
@@ -29,6 +29,5 @@
     "webpack": "^3.3.0",
     "yarn": "^0.27.5"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
