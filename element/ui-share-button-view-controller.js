@@ -45,7 +45,6 @@ class UIShareButton extends HTMLElement {
 
 		}
 
-		console.log('clicked', this.type)
 		this.$container.removeEventListener('click', this.clicked)
 		let original = this.class;
 		let temp = 'fa fa-check'
@@ -77,28 +76,24 @@ class UIShareButton extends HTMLElement {
 
 	disconnectedCallback() {
 		this.connected = false;
-		console.log('disconnected');
+		//console.log('disconnected');
 	}
 
 	attributeChangedCallback(attrName, oldVal, newVal) {
 		switch(attrName){
 			case 'value':
 				this.value = newVal;
-				console.log('VALUE: ', newVal)
 				break;
 			case 'type':
 				//If type is invalid, default to 'share'
 				if(this.validTypes.includes(newVal)){ this.type = newVal; }
 				else { this.type = 'share'; }
-				console.log('TYPE: ', newVal)
 				break;
 			case 'size':
 				this.size = newVal;
-				console.log('SIZE: ', newVal)
 				break;
 			case 'url':
 				this.url = newVal;
-				console.log('URL: ', newVal)
 				break;
 			default:
 				console.warn(`Attribute ${attrName} is not handled, you should probably do that`);
@@ -156,9 +151,8 @@ class UIShareButton extends HTMLElement {
 		try {
 			var successful = document.execCommand('copy');
 			var msg = successful ? 'successful' : 'unsuccessful';
-			console.log('Copying text command was ' + msg);
 		} catch (err) {
-			console.log('Oops, unable to copy');
+			console.error('Unable to copy');
 		}
 
 		document.body.removeChild(textArea);
