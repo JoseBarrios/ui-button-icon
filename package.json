@@ -1,33 +1,32 @@
 {
-  "name": "@josebarrios/ui-share-button",
-  "version": "0.0.4",
-  "description": "A share button element ",
-  "main": "index.js",
-  "scripts": {
-    "build": "./node_modules/yarn/bin/yarn upgrade; ./node_modules/webpack/bin/webpack.js",
-    "test": "./node_modules/http-server/bin/http-server"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JoseBarrios/ui-share-button.git"
-  },
-  "keywords": [
-    "custom",
-    "element",
-    "class"
-  ],
-  "browser": "browser.js",
-  "author": "JoseBarrios",
-  "license": "UNLICENSED",
-  "bugs": {
-    "url": "https://github.com/JoseBarrios/ui-share-button/issues"
-  },
-  "homepage": "https://github.com/JoseBarrios/ui-share-button#readme",
-  "devDependencies": {
-    "http-server": "^0.10.0",
-    "mocha": "^3.4.2",
-    "webpack": "^3.3.0",
-    "yarn": "^0.27.5"
-  },
-  "dependencies": {}
+	"name": "ui-share-button",
+	"version": "0.1.0",
+	"description": "A share button element ",
+	"main": "index.js",
+	"scripts": {
+		"build": "./node_modules/yarn/bin/yarn upgrade; ./node_modules/webpack/bin/webpack.js",
+		"test": "./node_modules/http-server/bin/http-server"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/JoseBarrios/ui-share-button.git"
+	},
+	"keywords": [
+		"custom",
+		"element",
+		"class"
+	],
+	"browser": "browser.js",
+	"author": "JoseBarrios",
+	"license": "UNLICENSED",
+	"bugs": {
+		"url": "https://github.com/JoseBarrios/ui-share-button/issues"
+	},
+	"homepage": "https://github.com/JoseBarrios/ui-share-button#readme",
+	"devDependencies": {
+		"http-server": "^0.10.0",
+		"mocha": "^3.4.2",
+		"webpack": "^3.3.0"
+	},
+	"dependencies": {}
 }

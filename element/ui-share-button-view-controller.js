@@ -5,31 +5,31 @@ const uiShareButtonTemplate = uiShareButtonDoc.ownerDocument.querySelector('#ui-
 
 class UIShareButton extends HTMLElement {
 
-  static get observedAttributes(){
-    return ['value', 'type', 'size', 'url'];
-  }
+	static get observedAttributes(){
+		return ['value', 'type', 'size', 'url'];
+	}
 
-  constructor(){
-    super();
-    const view = document.importNode(uiShareButtonTemplate.content, true);
-    this.shadowRoot = this.attachShadow({mode: 'open'});
-    this.shadowRoot.appendChild(view);
+	constructor(){
+		super();
+		const view = document.importNode(uiShareButtonTemplate.content, true);
+		this.shadowRoot = this.attachShadow({mode: 'open'});
+		this.shadowRoot.appendChild(view);
 		this.connected = false;
 
 		this.validTypes = ['share', 'link', 'email', 'facebook', 'linkedin'];
 		this.class = 'fa-share';
 		this.size=1;
-  }
+	}
 
 	///STANDARD
 	connectedCallback() {
 		//Wire views here
-    this.$container = this.shadowRoot.querySelector('.container');
-    this.$icon = this.shadowRoot.querySelector('#icon');
+		this.$container = this.shadowRoot.querySelector('.container');
+		this.$icon = this.shadowRoot.querySelector('#icon');
 
 		//Bind context to event, so we can access self
 		this.$container.addEventListener('click', this.clicked.bind(this))
-    this._updateRendering();
+		this._updateRendering();
 	}
 
 	clicked(e){
@@ -38,7 +38,7 @@ class UIShareButton extends HTMLElement {
 			case 'email':
 				window.location.href = `mailto:?body=${this.url}`;
 				break;
-				case 'link':
+			case 'link':
 				this.copyTextToClipboard(this.url);
 				break;
 			default:
@@ -71,7 +71,7 @@ class UIShareButton extends HTMLElement {
 
 
 	adoptedCallback(){
-    //console.log('adoptedCallback');
+		//console.log('adoptedCallback');
 	}
 
 	disconnectedCallback() {
@@ -98,10 +98,10 @@ class UIShareButton extends HTMLElement {
 			default:
 				console.warn(`Attribute ${attrName} is not handled, you should probably do that`);
 		}
-  }
+	}
 
-  get shadowRoot(){return this._shadowRoot;}
-  set shadowRoot(value){ this._shadowRoot = value}
+	get shadowRoot(){return this._shadowRoot;}
+	set shadowRoot(value){ this._shadowRoot = value}
 
 	copyTextToClipboard(text) {
 		var textArea = document.createElement("textarea");
@@ -209,7 +209,7 @@ class UIShareButton extends HTMLElement {
 		this.dispatchEvent(new CustomEvent(this.defaultEventName, {detail: 'TODO'}));
 	}
 
-  _updateRendering() {
+	_updateRendering() {
 
 		if(this.$icon && this.$container){
 
@@ -223,9 +223,7 @@ class UIShareButton extends HTMLElement {
 			this.$container.style.borderRadius = `${this.size}em`
 		}
 
-
-
-  }
+	}
 }
 
 window.customElements.define('ui-share-button', UIShareButton);
