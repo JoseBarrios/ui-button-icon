@@ -79,9 +79,7 @@ class UIButtonIcon extends HTMLElement {
         this._updateRendering();
     }
 
-    _onClick(){
-        this.loading();
-    }
+    _onClick(){ }
 
     _isAlternateState(){
         return this.state.isLoading || this.state.isSuccess || this.state.isError || this.state.isDisabled;
