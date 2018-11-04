@@ -103,9 +103,12 @@ class UIButtonIcon extends HTMLElement {
         this.state.initial.type = this.type;
         this.state.initial.icon = this.icon;
         this.state.initial.color = this.style.color;
+        this.state.initial.borderColor = computedStyles.getPropertyValue("--border-color");
+        this.state.initial.hoverBorderColor = computedStyles.getPropertyValue("--hover-border-color");
         this.state.initial.hoverColor = computedStyles.getPropertyValue("--hover-color");
         this.state.initial.backgroundColor = computedStyles.getPropertyValue("--background-color");
         this.state.initial.hoverBackgroundColor = computedStyles.getPropertyValue("--hover-background-color");
+
     }
 
     init(){
@@ -115,19 +118,19 @@ class UIButtonIcon extends HTMLElement {
 
         this.style.setProperty("--color", this.state.initial.color);
         this.style.setProperty("--hover-color", this.state.initial.hoverColor);
-        //this.style.setProperty("--border-color", this.state.initial.borderColor);
+        this.style.setProperty("--border-color", this.state.initial.borderColor);
         this.style.setProperty("--background-color", this.state.initial.backgroundColor);
+        this.style.setProperty("--hover-border-color", this.state.initial.hoverBorderColor);
         this.style.setProperty("--hover-background-color", this.state.initial.hoverBackgroundColor);
 
         this.addEventListener('mouseenter', this.event.mouseenter)
         this.addEventListener('mouseleave', this.event.mouseleave)
         this.addEventListener('click', this.event.click)
 
+        this.$icon.style.color = "var(--color)";
         this.$container.style.cursor = "pointer";
-        this.$container.style.color = "var(--color)";
-        this.$container.style.border = "2px solid var(--border-color)";
+        this.$container.style.border = `${this.size}px solid var(--border-color)`;
         this.$container.style.backgroundColor = "var(--background-color)";
-        //this.$container.style.boxShadow = "inset 0px 0px 0px 2px var(--background-color)";
         this.$container.style.cursor = "pointer";
         this.state.isSuccess = false;
         this.state.isLoading = false;
@@ -138,13 +141,14 @@ class UIButtonIcon extends HTMLElement {
 
     hover(){
         if(!this.connected || this._isAlternateState()) return;
-        //this.$container.style.boxShadow = "inset 0px 0px 0px 2px var(--hover-background-color)";
+        this.$container.style.border = `${this.size}px solid var(--hover-border-color)`;
         this.$container.style.backgroundColor = "var(--hover-background-color)";
-        this.$icon.style.color = "var(--color)";
+        this.$icon.style.color = "var(--hover-color)";
     }
 
     disable(){
         if(!this.connected) return;
+
         this.type = this.state.initial.type;
         this.icon = this.state.initial.icon;
         this.state.spin = false;
@@ -154,9 +158,10 @@ class UIButtonIcon extends HTMLElement {
         this.removeEventListener('click', this.event.click)
         this.removeEventListener('mouseenter', this.event.mouseenter)
         this.removeEventListener('mouseleave', this.event.mouseleave)
-        //this.$container.style.boxShadow = "inset 0px 0px 0px 2px var(--disabled-color)";
-        this.$container.style.backgroundColor = "var(--disabled-color)"
-        this.$icon.style.color = "#fff"
+
+        this.$container.style.backgroundColor = "var(--disabled-background-color)"
+        this.$container.style.border = `${this.size}px solid var(--disabled-border-color)`
+        this.$icon.style.color = "var(--disabled-color)";
     }
 
     enable(){
@@ -167,7 +172,6 @@ class UIButtonIcon extends HTMLElement {
         this.addEventListener('click', this.event.click)
         this.$container.style.color = "var(--color)"
         this.$container.style.backgroundColor = "var(--background-color)"
-        //this.$container.style.boxShadow = "inset 0px 0px 0px 2px var(--background-color)";
     }
 
     success(){
@@ -179,8 +183,8 @@ class UIButtonIcon extends HTMLElement {
         this.state.spin = false;
         this._updateRendering();
 
-        //this.$container.style.boxShadow = "inset 0px 0px 0px 2px var(--success-color)";
         this.$container.style.backgroundColor = "var(--success-color)"
+        this.$container.style.border = `${this.size}px solid var(--success-color)`
         this.$icon.style.color = "#fff"
 
         let feedbackTimer = window.setTimeout(e => {
@@ -200,8 +204,8 @@ class UIButtonIcon extends HTMLElement {
         this.state.spin = false;
         this._updateRendering();
 
-        //this.$container.style.boxShadow = "inset 0px 0px 0px 2px var(--error-color)";
         this.$container.style.backgroundColor = "var(--error-color)"
+        this.$container.style.border = `${this.size}px solid var(--error-color)`
         this.$icon.style.color = "#fff"
 
         let feedbackTimer = window.setTimeout(e => {
@@ -217,12 +221,15 @@ class UIButtonIcon extends HTMLElement {
         this.$container.style.cursor = "wait";
         this.state.isLoading = true;
         this.removeEventListener("click", this.event.click)
-        this.style.setProperty("--background-color", this.state.initial.hoverBackgroundColor);
-        this.style.setProperty("--color", this.state.initial.hoverColor);
+
         this.icon = "circle-notch";
         this.type = "solid";
         this.state.spin = true;
         this._updateRendering();
+
+        this.$container.style.backgroundColor = "var(--color)"
+        this.$container.style.border = `${this.size}px solid var(--color)`
+        this.$icon.style.color = "var(--background-color)";
     }
 
     adoptedCallback(){
@@ -282,7 +289,6 @@ class UIButtonIcon extends HTMLElement {
 
     _renderIcon(){
         this.$icon.className = `${this._getFontClassType()} fa-${this.icon} ${this.state.spin? "fa-spin": ""}`;
-        this.$container.style.border = `2px solid var(--border-color)`;
         this.$icon.style.fontSize = `${this.size}em`;
         this.$container.style.width = `${this.size * 2}em`
         this.$container.style.height = `${this.size * 2}em`

@@ -8,12 +8,18 @@
         <style>
             /* TEST */
             ui-button-icon{
-                --color:red;
-                --border-color:red;
-                --background-color: transparent;
+                --color:#1c7ef8;
+                --border-color:#1c7ef8;
+                --background-color: #FFF;
+
                 --hover-color: #FFF;
+                --hover-border-color:#1c7ef8;
                 --hover-background-color: #1c7ef8;
+
                 --disabled-color: #C4C5D5;
+                --disabled-border-color: #FFF;
+                --disabled-background-color: #FFF;
+
                 --success-color: #3DBEA3;
                 --error-color: #F1536E;
             }
@@ -52,7 +58,8 @@ const iconButtons = document.querySelectorAll("ui-button-icon");
 iconButtons.forEach(button => button.addEventListener("click", buttonClicked))
 
 function buttonClicked(e){
-    setTimeout(function(){e.target.success()}, 2000)
+    e.target.loading();
+    setTimeout(function(){e.target.error()}, 2000)
 }
 
 </script>
