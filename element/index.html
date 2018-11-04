@@ -1,49 +1,53 @@
-<template id="ui-share-button-view">
+<template id="ui-button-round-view">
 
   <style>
 
-		@import url('https://use.fontawesome.com/releases/v4.7.0/css/font-awesome-css.min.css');
+        /* Roll this out to all the elements */
+		@import url('/vendors/fontawesome/css/all.min.css');
+
 		@font-face {
 			font-family: 'FontAwesome';
-			src: url('https://use.fontawesome.com/releases/v4.7.0/fonts/fontawesome-webfont.eot');
-			src: url('https://use.fontawesome.com/releases/v4.7.0/fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
-			url('https://use.fontawesome.com/releases/v4.7.0/fonts/fontawesome-webfont.woff2') format('woff2'),
-			url('https://use.fontawesome.com/releases/v4.7.0/fonts/fontawesome-webfont.woff') format('woff'),
-			url('https://use.fontawesome.com/releases/v4.7.0/fonts/fontawesome-webfont.ttf') format('truetype'),
-			url('https://use.fontawesome.com/releases/v4.7.0/fonts/fontawesome-webfont.svg#fontawesomeregular') format('svg');
+			src: url('/vendors/fontawesome/webfonts/fa-brands-400.woff') format('woff2'),
+			url('/vendors/fontawesome/webfonts/fa-light-300.woff') format('woff2'),
+			url('/vendors/fontawesome/webfonts/fa-regular-400.woff') format('woff'),
+			url('/vendors/fontawesome/webfonts/fa-solid-900.woff') format('woff');
 			font-weight: normal;
 			font-style: normal;
 		}
 
+         :host {
+             --color: #FFF;
+             --background-color: gray;
+             --hover-color: #FFF;
+             --hover-background-color: #1c7ef8;
+             --disabled-color: #C4C5D5;
+             --success-color: #3DBEA3;
+             --error-color: #F1536E;
+         }
+
 		.container {
+            text-align:center;
 			border-radius: 1em;
 			display:inline-block;
-			background-color:gray;
+			border-color:var(--color);
+			background-color:var(--background-color);
 			cursor: pointer;
-			color:white;
-		}
-
-		.container:hover {
-			background-color:white;
-			color: #fd5871;
-			box-shadow:inset 0px 0px 0px 2px #fd5871;
-			-moz-box-shadow:inset 0px 0px 0px 2px #fd5871;
-			-webkit-box-shadow:inset 0px 0px 0px 2px #fd5871;
+			color:var(--color);
 		}
 
 		#icon {
 			vertical-align:middle;
 			text-align:center;
 			line-height:1em;
+            margin-top:0.5em;
 		}
-
 	</style>
 
 	<div class="container">
-		<i id="icon" class="fa fa-arrows fa-4x"></i>
+		<i id="icon"></i>
 	</div>
 
 </template>
 
-<script type="text/javascript" src="ui-share-button-data-controller.js"> </script>
-<script type="text/javascript" src="ui-share-button-view-controller.js"> </script>
+<script type="text/javascript" src="ui-button-round-data-controller.js"> </script>
+<script type="text/javascript" src="ui-button-round-view-controller.js"> </script>

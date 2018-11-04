@@ -1,5 +1,5 @@
 {
-	"name": "ui-share-button",
+	"name": "ui-button-round",
 	"version": "0.1.0",
 	"description": "A share button element ",
 	"main": "index.js",
@@ -9,7 +9,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/JoseBarrios/ui-share-button.git"
+		"url": "git+https://github.com/JoseBarrios/ui-button-round.git"
 	},
 	"keywords": [
 		"custom",
@@ -20,9 +20,9 @@
 	"author": "JoseBarrios",
 	"license": "UNLICENSED",
 	"bugs": {
-		"url": "https://github.com/JoseBarrios/ui-share-button/issues"
+		"url": "https://github.com/JoseBarrios/ui-button-round/issues"
 	},
-	"homepage": "https://github.com/JoseBarrios/ui-share-button#readme",
+	"homepage": "https://github.com/JoseBarrios/ui-button-round#readme",
 	"devDependencies": {
 		"http-server": "^0.10.0",
 		"mocha": "^3.4.2",
