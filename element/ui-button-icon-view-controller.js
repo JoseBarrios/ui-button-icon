@@ -136,7 +136,7 @@ class UIButtonIcon extends HTMLElement {
     }
 
     hover(){
-        if(!this.connected) return;
+        if(!this.connected || this._isAlternateState()) return;
         this.$container.style.boxShadow = "inset 0px 0px 0px 2px var(--hover-background-color)";
         this.$container.style.backgroundColor = "var(--hover-background-color)";
         this.$icon.style.color = "var(--color)";
