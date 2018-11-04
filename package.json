@@ -1,6 +1,6 @@
 {
 	"name": "ui-button-icon",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "A share button element ",
 	"main": "index.js",
 	"scripts": {
