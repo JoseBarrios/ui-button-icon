@@ -1,9 +1,9 @@
 'use strict'
 
-const uiButtonRoundDoc = document._currentScript || document.currentScript;
-const uiButtonRoundTemplate = uiButtonRoundDoc.ownerDocument.querySelector('#ui-button-round-view');
+const uiButtonIconDoc = document._currentScript || document.currentScript;
+const uiButtonIconTemplate = uiButtonIconDoc.ownerDocument.querySelector('#ui-button-icon-view');
 
-class UIButtonRound extends HTMLElement {
+class UIButtonIcon extends HTMLElement {
 
     static get observedAttributes(){
         return ['value', 'type', 'icon', 'size', 'url', 'disabled'];
@@ -12,7 +12,7 @@ class UIButtonRound extends HTMLElement {
     constructor(){
         super();
 
-        const view = document.importNode(uiButtonRoundTemplate.content, true);
+        const view = document.importNode(uiButtonIconTemplate.content, true);
         this.shadowRoot = this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(view);
         this.connected = false;
@@ -52,7 +52,7 @@ class UIButtonRound extends HTMLElement {
                 break;
 
             default:
-                console.log(`ui-button-round: type '${value}' is not implemented`)
+                console.log(`ui-button-icon: type '${value}' is not implemented`)
         }
     }
 
@@ -170,7 +170,7 @@ class UIButtonRound extends HTMLElement {
     }
 
     success(){
-        if(!this.connected) return;
+        if(!this.connected || this.disabled) return;
         this.isSuccess = true;
         this.removeEventListener('click', this.event.click)
         this.type = "solid";
@@ -192,6 +192,7 @@ class UIButtonRound extends HTMLElement {
     }
 
     error(){
+        if(!this.connected || this.disabled) return;
         this.removeEventListener('click', this.event.click)
         this.state.isError = true;
         this.type = "solid";
@@ -212,6 +213,7 @@ class UIButtonRound extends HTMLElement {
     }
 
     loading(){
+        if(!this.connected || this.disabled) return;
         this.$container.style.cursor = "wait";
         this.state.isLoading = true;
         this.removeEventListener("click", this.event.click)
@@ -293,4 +295,4 @@ class UIButtonRound extends HTMLElement {
     }
 }
 
-window.customElements.define('ui-button-round', UIButtonRound);
+window.customElements.define('ui-button-icon', UIButtonIcon);

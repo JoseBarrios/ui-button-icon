@@ -5,7 +5,7 @@ const config = {
   entry: './index.js',
   output: {
     path: path.resolve(__dirname, 'element'),
-    filename: 'ui-button-round-data-controller.js'
+    filename: 'ui-button-icon-data-controller.js'
   },
 };
 

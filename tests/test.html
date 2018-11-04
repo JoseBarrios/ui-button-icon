@@ -6,7 +6,7 @@
 		<link rel='import' href='../element/index.html'>
 		<meta name=viewport content="width=device-width, initial-scale=1">
         <style>
-            ui-button-round{
+            ui-button-icon{
             }
         </style>
 	</head>
@@ -14,21 +14,20 @@
 	<body style="background-color:white;padding:0px;margin:0px;">
 
 		<br>
-        <ui-button-round type="brand" icon="facebook-f"></ui-button-round>
-        <ui-button-round type="solid" icon="envelope"></ui-button-round>
-        <ui-button-round type="regular" icon="envelope"></ui-button-round>
-		<ui-button-round type="light" icon="envelope"></ui-button-round>
-		<ui-button-round type="light" icon="envelope" disabled></ui-button-round>
+        <ui-button-icon type="brand" icon="facebook-f"></ui-button-icon>
+        <ui-button-icon type="solid" icon="envelope"></ui-button-icon>
+        <ui-button-icon type="regular" icon="envelope"></ui-button-icon>
+		<ui-button-icon type="light" icon="envelope"></ui-button-icon>
+		<ui-button-icon type="light" icon="envelope" disabled></ui-button-icon>
 
 	</body>
 </html>
 
 <script>
-const iconButtons = document.querySelectorAll("ui-button-round");
+const iconButtons = document.querySelectorAll("ui-button-icon");
 iconButtons.forEach(button => button.addEventListener("click", buttonClicked))
 
 function buttonClicked(e){
-    console.log("CLICKED", e)
     setTimeout(function(){e.target.success()}, 2000)
 }
 
