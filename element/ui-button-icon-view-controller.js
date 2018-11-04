@@ -77,6 +77,7 @@ class UIButtonIcon extends HTMLElement {
         this.connected = true;
         this._setInitialState();
         this._updateRendering();
+        this.init();
     }
 
     _onClick(){ }
@@ -114,6 +115,7 @@ class UIButtonIcon extends HTMLElement {
 
         this.style.setProperty("--color", this.state.initial.color);
         this.style.setProperty("--hover-color", this.state.initial.hoverColor);
+        //this.style.setProperty("--border-color", this.state.initial.borderColor);
         this.style.setProperty("--background-color", this.state.initial.backgroundColor);
         this.style.setProperty("--hover-background-color", this.state.initial.hoverBackgroundColor);
 
@@ -122,9 +124,10 @@ class UIButtonIcon extends HTMLElement {
         this.addEventListener('click', this.event.click)
 
         this.$container.style.cursor = "pointer";
-        this.$container.style.color = "var(--color)"
-        this.$container.style.backgroundColor = "var(--background-color)"
-        this.$container.style.boxShadow = "inset 0px 0px 0px 2px var(--background-color)";
+        this.$container.style.color = "var(--color)";
+        this.$container.style.border = "2px solid var(--border-color)";
+        this.$container.style.backgroundColor = "var(--background-color)";
+        //this.$container.style.boxShadow = "inset 0px 0px 0px 2px var(--background-color)";
         this.$container.style.cursor = "pointer";
         this.state.isSuccess = false;
         this.state.isLoading = false;
@@ -135,7 +138,7 @@ class UIButtonIcon extends HTMLElement {
 
     hover(){
         if(!this.connected || this._isAlternateState()) return;
-        this.$container.style.boxShadow = "inset 0px 0px 0px 2px var(--hover-background-color)";
+        //this.$container.style.boxShadow = "inset 0px 0px 0px 2px var(--hover-background-color)";
         this.$container.style.backgroundColor = "var(--hover-background-color)";
         this.$icon.style.color = "var(--color)";
     }
@@ -151,7 +154,7 @@ class UIButtonIcon extends HTMLElement {
         this.removeEventListener('click', this.event.click)
         this.removeEventListener('mouseenter', this.event.mouseenter)
         this.removeEventListener('mouseleave', this.event.mouseleave)
-        this.$container.style.boxShadow = "inset 0px 0px 0px 2px var(--disabled-color)";
+        //this.$container.style.boxShadow = "inset 0px 0px 0px 2px var(--disabled-color)";
         this.$container.style.backgroundColor = "var(--disabled-color)"
         this.$icon.style.color = "#fff"
     }
@@ -164,7 +167,7 @@ class UIButtonIcon extends HTMLElement {
         this.addEventListener('click', this.event.click)
         this.$container.style.color = "var(--color)"
         this.$container.style.backgroundColor = "var(--background-color)"
-        this.$container.style.boxShadow = "inset 0px 0px 0px 2px var(--background-color)";
+        //this.$container.style.boxShadow = "inset 0px 0px 0px 2px var(--background-color)";
     }
 
     success(){
@@ -176,7 +179,7 @@ class UIButtonIcon extends HTMLElement {
         this.state.spin = false;
         this._updateRendering();
 
-        this.$container.style.boxShadow = "inset 0px 0px 0px 2px var(--success-color)";
+        //this.$container.style.boxShadow = "inset 0px 0px 0px 2px var(--success-color)";
         this.$container.style.backgroundColor = "var(--success-color)"
         this.$icon.style.color = "#fff"
 
@@ -186,7 +189,6 @@ class UIButtonIcon extends HTMLElement {
             this.init();
             window.clearTimeout(feedbackTimer);
         }, this.constant.feedbackDuration)
-
     }
 
     error(){
@@ -198,7 +200,7 @@ class UIButtonIcon extends HTMLElement {
         this.state.spin = false;
         this._updateRendering();
 
-        this.$container.style.boxShadow = "inset 0px 0px 0px 2px var(--error-color)";
+        //this.$container.style.boxShadow = "inset 0px 0px 0px 2px var(--error-color)";
         this.$container.style.backgroundColor = "var(--error-color)"
         this.$icon.style.color = "#fff"
 
@@ -280,10 +282,11 @@ class UIButtonIcon extends HTMLElement {
 
     _renderIcon(){
         this.$icon.className = `${this._getFontClassType()} fa-${this.icon} ${this.state.spin? "fa-spin": ""}`;
+        this.$container.style.border = `2px solid var(--border-color)`;
         this.$icon.style.fontSize = `${this.size}em`;
         this.$container.style.width = `${this.size * 2}em`
         this.$container.style.height = `${this.size * 2}em`
-        this.$container.style.borderRadius = `${this.size}em`
+        this.$container.style.borderRadius = `${this.size * 2}em`
     }
 
     _updateRendering() {

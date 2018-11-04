@@ -4,6 +4,7 @@ A button icon with an action feedback API
 #Styles
 ```css
 --color: #FFF;
+--border-color: #FFF;
 --background-color: gray;
 --hover-color: #FFF;
 --hover-background-color: #1c7ef8;
