@@ -1,11 +1,11 @@
 {
 	"name": "ui-button-icon",
-	"version": "0.0.3",
-	"description": "A share button element ",
+	"version": "1.0.0",
+	"description": "An icon button element (uses font awesome) ",
 	"main": "index.js",
 	"scripts": {
-		"build": "./node_modules/yarn/bin/yarn upgrade; ./node_modules/webpack/bin/webpack.js",
-		"test": "./node_modules/http-server/bin/http-server"
+		"test": "./node_modules/http-server/bin/http-server",
+		"start": "npm install; npm test"
 	},
 	"repository": {
 		"type": "git",
@@ -13,10 +13,11 @@
 	},
 	"keywords": [
 		"custom",
+		"button",
+		"icon",
 		"element",
 		"class"
 	],
-	"browser": "browser.js",
 	"author": "JoseBarrios",
 	"license": "UNLICENSED",
 	"bugs": {
@@ -24,9 +25,6 @@
 	},
 	"homepage": "https://github.com/JoseBarrios/ui-button-icon#readme",
 	"devDependencies": {
-		"http-server": "^0.10.0",
-		"mocha": "^3.4.2",
-		"webpack": "^3.3.0"
-	},
-	"dependencies": {}
+		"http-server": "^0.10.0"
+	}
 }

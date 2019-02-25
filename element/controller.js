@@ -1,7 +1,6 @@
 'use strict'
 
-const uiButtonIconDoc = document._currentScript || document.currentScript;
-const uiButtonIconTemplate = uiButtonIconDoc.ownerDocument.querySelector('#ui-button-icon-view');
+import view from "./view.js"
 
 class UIButtonIcon extends HTMLElement {
 
@@ -12,9 +11,8 @@ class UIButtonIcon extends HTMLElement {
     constructor(){
         super();
 
-        const view = document.importNode(uiButtonIconTemplate.content, true);
         this.shadowRoot = this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(view);
+        this.shadowRoot.appendChild(view.content.cloneNode(true));
         this.connected = false;
 
         this.constant = {};

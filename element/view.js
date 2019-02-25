@@ -1,5 +1,5 @@
-<template id="ui-button-icon-view">
-
+const view = document.createElement("template");
+view.innerHTML = `
   <style>
 
         /* Roll this out to all the elements */
@@ -60,8 +60,6 @@
 	<div class="container">
 		<i id="icon"></i>
 	</div>
+`;
 
-</template>
-
-<script type="text/javascript" src="ui-button-icon-data-controller.js"> </script>
-<script type="text/javascript" src="ui-button-icon-view-controller.js"> </script>
+export default view;
